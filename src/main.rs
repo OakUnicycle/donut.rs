@@ -2,6 +2,8 @@ use std::time;
 use std::thread;
 
 fn main() {
+    println!("\x1b[2J"); // I have no idea what this does but it makes my output go in the correct
+                         // place
     // initialise the orientation of the torus
     let mut alpha: f64 = 0.;
     let mut beta: f64 = 0.;
