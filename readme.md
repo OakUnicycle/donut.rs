@@ -1,7 +1,10 @@
 This project is remake of donut.c created by Andy Sloane ([@a1k0n](https://github.com/a1k0n)) following the guide on [https://www.a1k0n.net/2011/07/20/donut-math.html](https://www.a1k0n.net/2011/07/20/donut-math.html). 
 
 The first thing that I did was define an equation for the cross section of the torus (donut).
+
 ![](/images/cross_section.png)
+
+
 Which was given by:
 ```math
 \begin{pmatrix}
