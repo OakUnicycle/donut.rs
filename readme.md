@@ -3,7 +3,8 @@ This project is remake of donut.c created by Andy Sloane ([@a1k0n](https://githu
 The first thing that I did was define an equation for the cross section of the torus (donut).
 ![](/images/cross_section.png)
 Which was given by:
-$$\begin{pmatrix}
+$$
+\begin{pmatrix}
 x\\
 y\\
 \end{pmatrix}
@@ -16,7 +17,7 @@ $$
 This could have been given as Cartesian equation however, the parametric form makes it easier to iterate over for later.
 
 To give us a torus from this, we will apply a rotation matrix to rotate it around the y-axis.
-$$
+```math
 \begin{pmatrix}
 x\\
 y\\
@@ -33,7 +34,7 @@ R_1 + R_2 \sin\theta\\
 R_2 \cos \theta\\
 0\\
 \end{pmatrix}
-$$
+```
 This equation gives us every point on the torus given by 2 angles.
 
 Next as we want the torus to rotate, we will apply another 2 rotation matrices, it really doesn't matter which axes we rotate it on as long as the first is not about the y-axis (as this would not change anything) and as long as they are not the same. I chose the x-axis and then the z-axis. So now we have:
