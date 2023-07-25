@@ -9,7 +9,7 @@ Which was given by:
 ```math
 \begin{pmatrix}
 x\\
-y\\
+y
 \end{pmatrix}
 =
 \begin{pmatrix}
@@ -46,18 +46,18 @@ Next as we want the torus to rotate, we will apply another 2 rotation matrices, 
 \begin{pmatrix}
 x\\
 y\\
-z\\
+z
 \end{pmatrix}
 =
 \begin{pmatrix}
 \cos \beta & -\sin \beta & 0 \\
 \sin \beta & \cos \beta & 0\\
-0 & 0 & 1 \\
+0 & 0 & 1 
 \end{pmatrix}
 \begin{pmatrix}
 1 & 0 & 0 \\
 0 & \cos \alpha & -\sin \alpha \\
-0 & \sin \alpha & \cos \alpha \\
+0 & \sin \alpha & \cos \alpha 
 \end{pmatrix}
 \begin{pmatrix}
 \cos \phi & 0 & -\sin \phi \\
@@ -67,7 +67,7 @@ z\\
 \begin{pmatrix}
 R_1 + R_2 \sin\theta\\
 R_2 \cos \theta\\
-0\\
+0
 \end{pmatrix}
 ```
 
@@ -76,18 +76,18 @@ Which is a lot but can be simplifies (somewhat) to:
 \begin{pmatrix}
 x\\
 y\\
-z\\
+z
 \end{pmatrix}
 =
 \begin{pmatrix}
 \sin \alpha \sin \beta \sin \phi + \cos \beta \cos \phi & - \cos \alpha \sin \beta & \cdots \\
 \sin \beta \cos \phi - \sin \alpha \cos \beta \sin \phi & \cos \alpha \cos \beta & \cdots \\
-\cos \alpha \sin \phi & \sin \alpha & \cdots \\
+\cos \alpha \sin \phi & \sin \alpha & \cdots 
 \end{pmatrix}
 \begin{pmatrix}
 R_1 + R_2 \sin\theta\\
 R_2 \cos \theta\\
-0\\
+0
 \end{pmatrix}
 ```
 
