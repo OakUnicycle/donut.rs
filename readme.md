@@ -1,5 +1,9 @@
 This project is remake of donut.c created by Andy Sloane ([@a1k0n](https://github.com/a1k0n)) following the guide on [https://www.a1k0n.net/2011/07/20/donut-math.html](https://www.a1k0n.net/2011/07/20/donut-math.html). 
 
+
+
+# How it works
+
 The first thing that I did was define an equation for the cross section of the torus (donut).
 
 ![](/images/cross_section.png)
@@ -93,13 +97,52 @@ R_2 \cos \theta\\
 
 As you can see, I have not included the last column as this will multiply with 0 when multiplied by the circle, so it is irrelevant. The other thing that you might have noticed is that I have not multiplied out the rotations with the circle, this is purposeful, as you will see later that the rotations will be useful in another place.
 
+## Rendering
+### The maths
+Before we move on, I will talk about how to render the torus.
+Below is a diagram of how the torus is mapped onto the screen. As you can see, the two right angled triangles are similar.
+
+![](images/perspective.png)
+
+This means that 
+$$\frac{y'}{z'} = \frac{y}{z}$$
+and therefore
+$$y' = \frac{yz'}{z}$$
+where $z'$ is the distance to the screen and $z$ is the distance to the point. The same also follows for $x'$. This gives us that the torus projects to $(x′,y′)=(\frac{z'x}{z},\frac{z'y}{z})$.
+
+### The Program
+First we will initialise an output buffer the size of the output to an array of spaces. Next we create a z-buffer (an array of floats that will hold $z^{-1}=\frac{1}{z}$ of the points that are plotted there) of the same size initialised to 0 (infinitely far away). We will then iterate over points on the torus by looping over different $\theta$s and $\phi$s and work out the coordinates of those points ( $z$ will have to have the distance to the torus added). You will then have to transform this point onto the screen giving us $x'$ and $y'$. Use this to figure out which character on the screen it relates to. Next work out what $z^{-1}$ is and if it is greater than the value already in the z-buffer then plot the corresponding character into the output buffer.
+
 ## Lighting
-Now that we have defined the torus and its rotation, we need to work out how to light each point.
+Now that we have defined the torus and its rotation, we need to work out how to light each point. The first step in doing this is figuring out which way the surface at any given point is facing.
+To do this we will create a normal surface vector and centre it at (0, 0).
+
+![](images/vector.png)
+
+This vector is given by 
+```math
+\vec{N}
+=
+\begin{pmatrix}
+R_2 \sin\theta\\
+R_2 \cos \theta
+\end{pmatrix}
+```
+If we then transform this vector by the same transformation as the point, we will get the normal to the surface at that point. I.e.
+```math
+\begin{pmatrix}
+\sin \alpha \sin \beta \sin \phi + \cos \beta \cos \phi & - \cos \alpha \sin \beta & \cdots \\
+\sin \beta \cos \phi - \sin \alpha \cos \beta \sin \phi & \cos \alpha \cos \beta & \cdots \\
+\cos \alpha \sin \phi & \sin \alpha & \cdots 
+\end{pmatrix}
+\begin{pmatrix}
+R_2 \sin\theta\\
+R_2 \cos \theta\\
+0
+\end{pmatrix}
+```
 
 
 
-
-
-![](https://www.a1k0n.net/img/perspective.png)
 
 
